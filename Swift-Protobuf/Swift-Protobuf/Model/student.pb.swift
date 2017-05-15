@@ -19,8 +19,8 @@ fileprivate struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAP
   typealias Version = _1
 }
 
-struct Example: SwiftProtobuf.Message {
-  static let protoMessageName: String = "Example"
+struct Student: SwiftProtobuf.Message {
+  static let protoMessageName: String = "Student"
 
   var name: String = String()
 
@@ -63,9 +63,188 @@ struct Example: SwiftProtobuf.Message {
   }
 }
 
+struct Students: SwiftProtobuf.Message {
+  static let protoMessageName: String = "Students"
+
+  var students: [Student] = []
+
+  var hasMore_p: Bool = false
+
+  var info: String = String()
+
+  var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  init() {}
+
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      switch fieldNumber {
+      case 1: try decoder.decodeRepeatedMessageField(value: &self.students)
+      case 2: try decoder.decodeSingularBoolField(value: &self.hasMore_p)
+      case 3: try decoder.decodeSingularStringField(value: &self.info)
+      default: break
+      }
+    }
+  }
+
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    if !self.students.isEmpty {
+      try visitor.visitRepeatedMessageField(value: self.students, fieldNumber: 1)
+    }
+    if self.hasMore_p != false {
+      try visitor.visitSingularBoolField(value: self.hasMore_p, fieldNumber: 2)
+    }
+    if !self.info.isEmpty {
+      try visitor.visitSingularStringField(value: self.info, fieldNumber: 3)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+}
+
+struct StudentRequest: SwiftProtobuf.Message {
+  static let protoMessageName: String = "StudentRequest"
+
+  var id: String = String()
+
+  /// basic, whole
+  var type: String = String()
+
+  var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  init() {}
+
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      switch fieldNumber {
+      case 1: try decoder.decodeSingularStringField(value: &self.id)
+      case 2: try decoder.decodeSingularStringField(value: &self.type)
+      default: break
+      }
+    }
+  }
+
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    if !self.id.isEmpty {
+      try visitor.visitSingularStringField(value: self.id, fieldNumber: 1)
+    }
+    if !self.type.isEmpty {
+      try visitor.visitSingularStringField(value: self.type, fieldNumber: 2)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+}
+
+struct StudentListRequest: SwiftProtobuf.Message {
+  static let protoMessageName: String = "StudentListRequest"
+
+  var type: String = String()
+
+  var pageNumber: Int32 = 0
+
+  var pageCount: Int32 = 0
+
+  var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  init() {}
+
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      switch fieldNumber {
+      case 1: try decoder.decodeSingularStringField(value: &self.type)
+      case 2: try decoder.decodeSingularInt32Field(value: &self.pageNumber)
+      case 3: try decoder.decodeSingularInt32Field(value: &self.pageCount)
+      default: break
+      }
+    }
+  }
+
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    if !self.type.isEmpty {
+      try visitor.visitSingularStringField(value: self.type, fieldNumber: 1)
+    }
+    if self.pageNumber != 0 {
+      try visitor.visitSingularInt32Field(value: self.pageNumber, fieldNumber: 2)
+    }
+    if self.pageCount != 0 {
+      try visitor.visitSingularInt32Field(value: self.pageCount, fieldNumber: 3)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+}
+
+struct ErrorResponse: SwiftProtobuf.Message {
+  static let protoMessageName: String = "ErrorResponse"
+
+  var code: Int32 = 0
+
+  var message: String = String()
+
+  var localeMessage: String = String()
+
+  var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  init() {}
+
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      switch fieldNumber {
+      case 1: try decoder.decodeSingularInt32Field(value: &self.code)
+      case 2: try decoder.decodeSingularStringField(value: &self.message)
+      case 3: try decoder.decodeSingularStringField(value: &self.localeMessage)
+      default: break
+      }
+    }
+  }
+
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    if self.code != 0 {
+      try visitor.visitSingularInt32Field(value: self.code, fieldNumber: 1)
+    }
+    if !self.message.isEmpty {
+      try visitor.visitSingularStringField(value: self.message, fieldNumber: 2)
+    }
+    if !self.localeMessage.isEmpty {
+      try visitor.visitSingularStringField(value: self.localeMessage, fieldNumber: 3)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+}
+
+struct SimpleInfo: SwiftProtobuf.Message {
+  static let protoMessageName: String = "SimpleInfo"
+
+  var title: String = String()
+
+  var info: String = String()
+
+  var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  init() {}
+
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      switch fieldNumber {
+      case 1: try decoder.decodeSingularStringField(value: &self.title)
+      case 2: try decoder.decodeSingularStringField(value: &self.info)
+      default: break
+      }
+    }
+  }
+
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    if !self.title.isEmpty {
+      try visitor.visitSingularStringField(value: self.title, fieldNumber: 1)
+    }
+    if !self.info.isEmpty {
+      try visitor.visitSingularStringField(value: self.info, fieldNumber: 2)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+}
+
 // MARK: - Code below here is support for the SwiftProtobuf runtime.
 
-extension Example: SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+extension Student: SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "name"),
     2: .same(proto: "id"),
@@ -73,11 +252,87 @@ extension Example: SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._Prot
     4: .same(proto: "mobile"),
   ]
 
-  func _protobuf_generated_isEqualTo(other: Example) -> Bool {
+  func _protobuf_generated_isEqualTo(other: Student) -> Bool {
     if self.name != other.name {return false}
     if self.id != other.id {return false}
     if self.email != other.email {return false}
     if self.mobile != other.mobile {return false}
+    if unknownFields != other.unknownFields {return false}
+    return true
+  }
+}
+
+extension Students: SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+    1: .same(proto: "students"),
+    2: .standard(proto: "has_more"),
+    3: .same(proto: "info"),
+  ]
+
+  func _protobuf_generated_isEqualTo(other: Students) -> Bool {
+    if self.students != other.students {return false}
+    if self.hasMore_p != other.hasMore_p {return false}
+    if self.info != other.info {return false}
+    if unknownFields != other.unknownFields {return false}
+    return true
+  }
+}
+
+extension StudentRequest: SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+    1: .same(proto: "id"),
+    2: .same(proto: "type"),
+  ]
+
+  func _protobuf_generated_isEqualTo(other: StudentRequest) -> Bool {
+    if self.id != other.id {return false}
+    if self.type != other.type {return false}
+    if unknownFields != other.unknownFields {return false}
+    return true
+  }
+}
+
+extension StudentListRequest: SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+    1: .same(proto: "type"),
+    2: .standard(proto: "page_number"),
+    3: .standard(proto: "page_count"),
+  ]
+
+  func _protobuf_generated_isEqualTo(other: StudentListRequest) -> Bool {
+    if self.type != other.type {return false}
+    if self.pageNumber != other.pageNumber {return false}
+    if self.pageCount != other.pageCount {return false}
+    if unknownFields != other.unknownFields {return false}
+    return true
+  }
+}
+
+extension ErrorResponse: SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+    1: .same(proto: "code"),
+    2: .same(proto: "message"),
+    3: .standard(proto: "locale_message"),
+  ]
+
+  func _protobuf_generated_isEqualTo(other: ErrorResponse) -> Bool {
+    if self.code != other.code {return false}
+    if self.message != other.message {return false}
+    if self.localeMessage != other.localeMessage {return false}
+    if unknownFields != other.unknownFields {return false}
+    return true
+  }
+}
+
+extension SimpleInfo: SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+    1: .same(proto: "title"),
+    2: .same(proto: "info"),
+  ]
+
+  func _protobuf_generated_isEqualTo(other: SimpleInfo) -> Bool {
+    if self.title != other.title {return false}
+    if self.info != other.info {return false}
     if unknownFields != other.unknownFields {return false}
     return true
   }
