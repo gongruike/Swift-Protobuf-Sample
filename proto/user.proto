@@ -1,20 +1,20 @@
 syntax = "proto3";
-message Student {
-  string name = 1;
-  int32 id = 2;
-  string email = 3;
+
+message User {
+  int32 id = 1;
+  string name = 2;
   string mobile = 4;
 }
-message Students {
-  repeated Student students = 1;
+message UserList {
+  repeated User users = 1;
   bool has_more = 2;
   string info = 3;
 }
-message StudentRequest {
+message UserRequest {
   string id = 1;
   string type = 2;// basic, whole
 }
-message StudentListRequest {
+message UserListRequest {
   string type = 1;
   int32 page_number = 2;
   int32 page_count = 3;
@@ -22,7 +22,6 @@ message StudentListRequest {
 message ErrorResponse {
   int32 code = 1;
   string message = 2;
-  string locale_message = 3;
 }
 message SimpleInfo {
   string title = 1;
